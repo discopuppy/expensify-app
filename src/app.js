@@ -11,6 +11,8 @@ import './styles/styles.scss';
 
 const store = configureStore();
 
+console.log('test');
+
 // addExpense -> Water Bill
 // Gas Bill
 // setTextFilter -> bill
