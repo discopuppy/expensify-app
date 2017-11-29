@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Zac Moss",
   "license": "MIT",
+  "engines": {
+    "node": "8.8.0"
+  },
   "scripts": {
     "serve": "live-server public/",
     "build:dev": "webpack",
