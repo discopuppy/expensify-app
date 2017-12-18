@@ -8,11 +8,32 @@ import { setTextFilter } from './actions/filters';
 import getVisibleExpenses from './selectors/expenses';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
-import './firebase/firebase';
+import { firebase } from './firebase/firebase';
 
 const store = configureStore();
 
-console.log('test');
+const jsx = (
+    <Provider store={store}>
+        <AppRouter />
+    </Provider>
+);
+
+ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
+
+store.dispatch(startSetExpenses()).then(() => {
+    ReactDOM.render(jsx, document.getElementById('app'));
+});
+
+firebase.auth().onAuthStateChanged((user) => { // works through Firebases API
+                                            // passes in 'user', if 'user' is true
+                                            // then user is logged in if 'user
+                                            // is false then user is logged out.
+    if (user) {
+        console.log('logged in');        
+    } else {
+        console.log('logged out');
+    }
+});
 
 // addExpense -> Water Bill
 // Gas Bill
@@ -29,15 +50,3 @@ console.log('test');
 //const state = store.getState();
 //const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 //console.log(visibleExpenses);
-
-const jsx = (
-    <Provider store={store}>
-        <AppRouter />
-    </Provider>
-);
-
-ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
-
-store.dispatch(startSetExpenses()).then(() => {
-    ReactDOM.render(jsx, document.getElementById('app'));
-});

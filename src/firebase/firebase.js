@@ -1,7 +1,5 @@
 import * as firebase from 'firebase';
 
-// Original Firebase Config
-
 const config = {
     apiKey: "AIzaSyCr9Srwu4LQGzT4TW9BEmR3HdYqgXU-3KE",
     authDomain: "expensify-cbd2d.firebaseapp.com",
@@ -11,15 +9,12 @@ const config = {
     messagingSenderId: "587410493353"
   };
 
-// Testing / Production Environment Firebase Config
-
-
-
 firebase.initializeApp(config);
 
 const database = firebase.database();
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-export { firebase, database as default };
+export { firebase, googleAuthProvider, database as default };
 
 /* // child_removed
 database.ref('expenses').on('child_removed', (snapshot) => {
