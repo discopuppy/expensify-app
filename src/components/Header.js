@@ -12,9 +12,7 @@ const Header = ({ startLogout }) => (
                     <h1>Expensify</h1>
                 </Link>
                 <div>
-                    <span className="button">{firebase.auth().currentUser.displayName.split(" ")[0]}</span>
-                    {/*<span>{user.displayName}</span>
-                    {/* <span>{firebase.user && firebase.user(dispayName)}</span> */}
+                    {/*<span className="button">{firebase.auth().currentUser.displayName.split(" ")[0]}</span>*/}
                 </div>
                 <button className="button button--link"onClick={startLogout}>Logout</button>
             </div>
